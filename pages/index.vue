@@ -18,15 +18,37 @@
         </a>
       </div>
     </div>
+    <div class="grass"></div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
+  mounted() {
+      this.growgrass();
+  },
+  methods: {
+    growgrass() {
+      var numberOfBlades = 600;
+      var grass = document.getElementsByClassName('grass')[0];
+
+      function assignRandomStyles(blade) {
+        var randomHeight =  Math.floor(Math.random() * 100);
+        var randomLeft = Math.floor(Math.random() * (window.innerWidth - 8));
+        var randomRotation = Math.floor(Math.random() * 10) - 5;
+        blade.style.height = (randomHeight + 50) + 'px';
+        blade.style.zIndex = randomHeight;
+        blade.style.opacity = randomHeight * 0.02;
+        blade.style.left = randomLeft + 'px';
+        blade.style.transform = 'rotate(' + randomRotation + 'deg)';
+      }
+
+      for (var i = 0; i < numberOfBlades; i++) {
+        var blade = document.createElement('div');
+        assignRandomStyles(blade);
+        grass.appendChild(blade);
+      }
+    }
   }
 }
 </script>
@@ -61,27 +83,24 @@ body {
     text-align: center;
   }
 
-  @-webkit-keyframes Gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  .grass > div {
+    animation:breeze 8s cubic-bezier(.8,-0.5,.25,1.5) infinite;
+    background-color:rgb(0, 146, 0);
+    border-right:solid 5px rgb(0, 94, 0);
+    border-top-right-radius:100%;
+    bottom:0;
+    position:absolute;
+    transform-origin:bottom;
+    transition:all 100ms ease-in-out;
+    width:3px;
   }
 
-  @-moz-keyframes Gradient {
-    0% {
-      background-position: 0% 50%;
+  @keyframes breeze {
+    0%, 100% {
+      transform:auto;
     }
     50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
+      transform:rotate(10deg);
     }
   }
 
