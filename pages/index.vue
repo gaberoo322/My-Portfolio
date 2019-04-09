@@ -1,8 +1,8 @@
 <template>
-  <section class="container">
+  <section class="container min-h-screen flex justify-center items-center text-center mx-auto">
     <div>
-      <h1 class="text-grey-darker">I am Gabe Greenfield</h1>
-      <h3 class="text-grey-darker">I like to code the front end</h3>
+      <h1 class="text-black">I am Gabe Greenfield</h1>
+      <h3 class="text-black">I like to code the front end</h3>
       <div class="links">
         <a href="https://www.linkedin.com/in/gabriel-greenfield-91941579/" target="_blank">
           <img class="h-12 w-12" src="/svg/linkedin.svg">
@@ -29,22 +29,22 @@ export default {
   },
   methods: {
     growgrass() {
-      var numberOfBlades = 600;
-      var grass = document.getElementsByClassName('grass')[0];
+      const numberOfBlades = 800;
+      const grass = document.getElementsByClassName('grass')[0];
 
       function assignRandomStyles(blade) {
-        var randomHeight =  Math.floor(Math.random() * 100);
-        var randomLeft = Math.floor(Math.random() * (window.innerWidth - 8));
-        var randomRotation = Math.floor(Math.random() * 10) - 5;
-        blade.style.height = (randomHeight + 50) + 'px';
+        const randomHeight =  Math.floor(Math.random() * 40);
+        const randomLeft = Math.floor(Math.random() * (window.innerWidth - 25));
+        const randomRotation = Math.floor(Math.random() * 15) - 5;
+        blade.style.height = (randomHeight + 60) + 'px';
         blade.style.zIndex = randomHeight;
-        blade.style.opacity = randomHeight * 0.02;
+        blade.style.opacity = randomHeight * 0.12;
         blade.style.left = randomLeft + 'px';
         blade.style.transform = 'rotate(' + randomRotation + 'deg)';
       }
 
       for (var i = 0; i < numberOfBlades; i++) {
-        var blade = document.createElement('div');
+        let blade = document.createElement('div');
         assignRandomStyles(blade);
         grass.appendChild(blade);
       }
@@ -54,45 +54,49 @@ export default {
 </script>
 
 <style lang="less">
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
 body {
-  width: 100vh;
-  height: 90vh;
   color: #fff;
   background: linear-gradient(
-    -45deg,
-    rgba(99, 193, 50, 1),
-    rgba(184, 225, 255, 1),
-    rgba(161, 205, 244, 1)
+  rgba(2, 38, 96, .5),
+  rgba(13, 70, 157,.75),
+  rgb(109, 84, 169),
+  rgb(206, 117, 194),
+  rgb(229, 199, 187),
+  rgb(219, 144, 125),
+  rgb(140, 190, 214),
+  rgb(135, 206, 250)
   );
-  background-size: 400% 400%;
+  background-size: 100% 800%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite;
 
   .container {
     margin: 0 auto;
-    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
   }
 
-  .grass > div {
-    animation:breeze 8s cubic-bezier(.8,-0.5,.25,1.5) infinite;
-    background-color:rgb(0, 146, 0);
-    border-right:solid 5px rgb(0, 94, 0);
-    border-top-right-radius:100%;
-    bottom:0;
-    position:absolute;
-    transform-origin:bottom;
-    transition:all 100ms ease-in-out;
-    width:3px;
+  .grass {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    > div {
+      animation:breeze 8s cubic-bezier(.8,-0.5,.25,1.5) infinite;
+      background-color:rgba(0, 99, 0, 0.75);
+      border-right:solid 5px rgba(0, 182, 0, 0.75);
+      border-top-right-radius:100%;
+      bottom:0;
+      position:absolute;
+      transform-origin:bottom;
+      transition:all 100ms ease-in-out;
+      width:3px;
+    }
   }
 
   @keyframes breeze {
