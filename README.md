@@ -1,6 +1,6 @@
 # portfolio
 
-> the amazing display of gabe&#39;s finest software projects
+> Gabe&#39;s software development experience
 
 ## Build Setup
 

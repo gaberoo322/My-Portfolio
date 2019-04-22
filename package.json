@@ -1,7 +1,7 @@
 {
-  "name": "portfolio",
+  "name": "MyPortfolio",
   "version": "1.0.0",
-  "description": "the amazing display of gabe&#39;s finest software projects",
+  "description": "Gabe&#39;s software development experience",
   "author": "Gabe Greenfield",
   "private": true,
   "scripts": {
